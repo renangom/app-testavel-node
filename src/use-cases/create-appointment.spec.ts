@@ -7,12 +7,14 @@ describe('Create appointment', () => {
     it('shoul be able to create an appoitment', () => {
         const createAppointment = new CreateAppointment();
 
+        const startsAt = new Date();
         const endsAt = new Date();
-        endsAt.setDate(endsAt.getDate() + 1);
+        endsAt.setDate(endsAt.getDate() + 2);
+        startsAt.setDate(startsAt.getDate() + 1)
 
         expect(createAppointment.execute({
             customer: 'John Doe',
-            startsAt: new Date(),
+            startsAt,
             endsAt
         })).resolves.toBeInstanceOf(Appointment)
     })
